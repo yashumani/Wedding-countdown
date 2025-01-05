@@ -7,7 +7,9 @@
     <title>Yashu Sharma Weds Aditi Varma - Wedding Countdown</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Your existing styles */
         body {
             font-family: 'Roboto', sans-serif;
             text-align: center;
@@ -149,6 +151,40 @@
             z-index: -1;
             border-radius: 8px;
         }
+
+        .music-controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-controls button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #d23669;
+            color: white;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .video-container video {
+            max-width: 48%;
+            border-radius: 8px;
+        }
     </style>
 </head>
 
@@ -180,32 +216,75 @@
         <p><strong>Daughter of Mr. & Mrs. Varma</strong></p>
 
         <h2>💍 Wedding Ceremony 💍</h2>
-        <p><strong>Date:</strong> Tuesday, February 18, 2025</p>
-        <p><strong>Venue:</strong> Legacy Banquets, Phase 1, Witty International School Campus, RDP 10, opposite MHADA
-            Colony, near BLOCK-7, Chikoowadi, Borivali West, Mumbai, Maharashtra 400092</p>
-        <p><strong>Timings:</strong></p>
-        <ul>
-            <li>Baraat Departure: 6:30 PM</li>
-            <li>Reception: Till 10:30 PM</li>
-            <li>Wedding Ceremony Begins: 11:00 PM</li>
-        </ul>
-        <p>On this auspicious day, your presence and blessings will mean the world to us as we celebrate the sacred
-            union of our families.</p>
+        <div class="video-container">
+            <div>
+                <p><strong>Date:</strong> Tuesday, February 18, 2025</p>
+                <p><strong>Venue:</strong> Legacy Banquets, Phase 1, Witty International School Campus, RDP 10, opposite
+                    MHADA
+                    Colony, near BLOCK-7, Chikoowadi, Borivali West, Mumbai, Maharashtra 400092</p>
+                <p><strong>Timings:</strong></p>
+                <ul>
+                    <li>Baraat Departure: 6:30 PM</li>
+                    <li>Reception: Till 10:30 PM</li>
+                    <li>Wedding Ceremony Begins: 11:00 PM</li>
+                </ul>
+                <p>On this auspicious day, your presence and blessings will mean the world to us as we celebrate the
+                    sacred
+                    union of our families.</p>
+            </div>
+            <video controls>
+                <source src="wedding_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
 
         <h2>🎉 Reception Celebration 🎉</h2>
-        <p><strong>Date:</strong> Friday, February 21, 2025</p>
-        <p><strong>Time:</strong> 7:00 PM</p>
-        <p><strong>Venue:</strong> Hotel Lotus Grace, 7/1, Plot Alpha, Sahibabad Industrial Area, Site-4, Sahibabad,
-            Ghaziabad-201012 (U.P.)</p>
-        <p>Join us as we continue the celebrations with an evening of music, dance, and a sumptuous feast.</p>
+        <div class="video-container">
+            <div>
+                <p><strong>Date:</strong> Friday, February 21, 2025</p>
+                <p><strong>Time:</strong> 7:00 PM</p>
+                <p><strong>Venue:</strong> Hotel Lotus Grace, 7/1, Plot Alpha, Sahibabad Industrial Area, Site-4,
+                    Sahibabad,
+                    Ghaziabad-201012 (U.P.)</p>
+                <p>Join us as we continue the celebrations with an evening of music, dance, and a sumptuous feast.</p>
+                <p>Your gracious presence is the most cherished gift we could ask for. We eagerly look forward to
+                    celebrating
+                    this joyous occasion with you!</p>
+                <p><strong>Warm regards,</strong></p>
+                <p><strong>The Sharma Family</strong></p>
+            </div>
+            <video controls>
+                <source src="reception_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
 
-        <p>Your gracious presence is the most cherished gift we could ask for. We eagerly look forward to celebrating
-            this joyous occasion with you!</p>
-        <p><strong>Warm regards,</strong></p>
-        <p><strong>The Sharma Family</strong></p>
+    <audio id="bgmusic" autoplay loop>
+        <source src="bgmusic.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="music-controls">
+        <button onclick="document.getElementById('bgmusic').play()">Play</button>
+        <button onclick="document.getElementById('bgmusic').pause()">Pause</button>
+        <button id="muteButton" onclick="toggleMute()"><i class="fas fa-volume-mute"></i></button>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" onchange="setVolume(this.value)">
     </div>
 
     <script>
+        // Play background music on page load
+        window.onload = function () {
+            document.getElementById('bgmusic').play();
+        };
+        // Set initial volume
+        document.getElementById('bgmusic').volume = 1;
+
+        // Set volume function
+        function setVolume(value) {
+            document.getElementById('bgmusic').volume = value;
+        }
+
         // Countdown logic
         const weddingDate = new Date('2025-02-18T00:00:00');
         const countdownElement = document.getElementById('countdown');
@@ -227,6 +306,14 @@
         }
 
         setInterval(updateCountdown, 1000);
+
+        // Mute/Unmute logic
+        function toggleMute() {
+            const bgmusic = document.getElementById('bgmusic');
+            const muteButton = document.getElementById('muteButton');
+            bgmusic.muted = !bgmusic.muted;
+            muteButton.innerHTML = bgmusic.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+        }
     </script>
 </body>
 
