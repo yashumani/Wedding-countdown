@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashu Sharma Weds Aditi Varma - Wedding Countdown</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #d23669;
+            font-size: 3em;
+            margin-top: 20px;
+        }
+
+        .countdown {
+            font-size: 2em;
+            margin: 20px 0;
+            color: #d23669;
+        }
+
+        .details {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: left;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .details h2 {
+            font-family: 'Great Vibes', cursive;
+            color: #d23669;
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        .details p {
+            margin: 10px 0;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .details strong {
+            color: #d23669;
+        }
+
+        .details h3 {
+            font-family: 'Great Vibes', cursive;
+            color: #333;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Yashu Sharma Weds Aditi Varma</h1>
+    <div class="countdown" id="countdown"></div>
+
+    <div class="details">
+        <h2>Wedding & Reception Invitation</h2>
+        <p>With the blessings of the Almighty and our beloved families,</p>
+        <p><strong>The Sharma Family</strong> cordially invites you to grace the auspicious occasion of the wedding of:
+        </p>
+        <h3>Yashu Sharma</h3>
+        <p><strong>Son of Mr. & Mrs. Sharma</strong></p>
+        <h3>With</h3>
+        <h3>Aditi Varma</h3>
+        <p><strong>Daughter of Mr. & Mrs. Varma</strong></p>
+
+        <h2>💍 Wedding Ceremony 💍</h2>
+        <p><strong>Date:</strong> Tuesday, February 18, 2025</p>
+        <p><strong>Venue:</strong> Legacy Banquets, Phase 1, Witty International School Campus, RDP 10, opposite MHADA
+            Colony, near BLOCK-7, Chikoowadi, Borivali West, Mumbai, Maharashtra 400092</p>
+        <p><strong>Timings:</strong></p>
+        <ul>
+            <li>Baraat Departure: 6:30 PM</li>
+            <li>Reception: Till 10:30 PM</li>
+            <li>Wedding Ceremony Begins: 11:00 PM</li>
+        </ul>
+        <p>On this auspicious day, your presence and blessings will mean the world to us as we celebrate the sacred
+            union of our families.</p>
+
+        <h2>🎉 Reception Celebration 🎉</h2>
+        <p><strong>Date:</strong> Friday, February 21, 2025</p>
+        <p><strong>Time:</strong> 7:00 PM</p>
+        <p><strong>Venue:</strong> Hotel Lotus Grace, 7/1, Plot Alpha, Sahibabad Industrial Area, Site-4, Sahibabad,
+            Ghaziabad-201012 (U.P.)</p>
+        <p>Join us as we continue the celebrations with an evening of music, dance, and a sumptuous feast.</p>
+
+        <p>Your gracious presence is the most cherished gift we could ask for. We eagerly look forward to celebrating
+            this joyous occasion with you!</p>
+        <p><strong>Warm regards,</strong></p>
+        <p><strong>The Sharma Family</strong></p>
+    </div>
+
+    <script>
+        // Countdown logic
+        const weddingDate = new Date('2025-02-18T00:00:00');
+        const countdownElement = document.getElementById('countdown');
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeDifference = weddingDate - now;
+
+            if (timeDifference > 0) {
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds left until the wedding!`;
+            } else {
+                countdownElement.textContent = "It's your wedding day! Congratulations!";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>
