@@ -11,7 +11,6 @@
         body {
             font-family: 'Roboto', sans-serif;
             text-align: center;
-            background-color: #f9f9f9;
             color: #333;
             margin: 0;
             padding: 0;
@@ -22,22 +21,28 @@
             color: #d23669;
             font-size: 3em;
             margin-top: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .countdown {
             font-size: 2em;
             margin: 20px 0;
             color: #d23669;
+            position: relative;
+            z-index: 2;
         }
 
         .details {
             max-width: 800px;
             margin: 20px auto;
             text-align: left;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
         }
 
         .details h2 {
@@ -73,15 +78,74 @@
             font-size: 1.1em;
             margin: 5px 0;
         }
+
+        .image-container {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .details-video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            border-radius: 8px;
+        }
     </style>
 </head>
 
 <body>
+    <video autoplay muted loop class="video-background">
+        <source src="background_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
     <h1>Yashu Sharma Weds Aditi Varma</h1>
     <div class="countdown" id="countdown"></div>
 
     <div class="details">
+        <video autoplay muted loop class="details-video-background">
+            <source src="content_background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <h2>Wedding & Reception Invitation</h2>
+        <div class="image-container">
+            <img src="yashu_aditi.jpg" alt="Yashu and Aditi">
+        </div>
         <p>With the blessings of the Almighty and our beloved families,</p>
         <p><strong>The Sharma Family</strong> cordially invites you to grace the auspicious occasion of the wedding of:
         </p>
